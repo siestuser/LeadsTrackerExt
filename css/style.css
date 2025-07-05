@@ -51,14 +51,21 @@ input:focus{
 }
 button {
     font-family: var(--font-family), sans-serif;
-    background-color: var(--btn-background);
-    color: var(--btn-color);
     padding: 10px 20px;
     border-radius: var(--border-radius);
     border: none;
     font-weight: bold;
     font-size: 14px;
 }
+.save-btn{
+    background-color: var(--btn-background);
+    color: var(--btn-color);
+}
+.clear-btn{
+    background-color: palevioletred;
+    color: white;
+}
+
 .lead-list ul{
     list-style: none;
     padding: 10px;
