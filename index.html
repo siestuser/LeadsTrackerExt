@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lead tracker</title>
     <link rel="stylesheet" href="/css/style.css">
-
+    <link rel="favicon" href="/img/icon.png">
 </head>
 <body>
 <div class="wrapper">
-    <input id="input-el" type="text">
+    <input aria-label="input-field-lead" id="input-el" type="text">
+    <div class="notification error-msg" id="error-div">⚠️ Input field cannot be empty!</div>
     <button id="input-btn" type="button">Save Input</button>
-    <ul id="ul-el">
-
-    </ul>
+    <div class="lead-list">
+        <ul id="ul-el">
+        </ul>
+    </div>
 </div>
 <script src="/js/index.js"></script>
 </body>
