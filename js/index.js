@@ -27,7 +27,7 @@ function addListElement(){
         liEl.innerHTML = `<a href="${inputEl.value}" target="_blank">${inputEl.value}</a>`;
         ulEl.appendChild(liEl);
         localStorage.setItem('myLeads', JSON.stringify(myLeads));
-        clearField();
+        inputEl.value = '';
     } else {
         //show error
         errorDiv.style.display = 'block';
@@ -46,13 +46,8 @@ function listLeadsFromLocalStorage(){
 }
 
 //clearing things
-
-function clearField(){
-    inputEl.value = '';
-}
 function clearLeads(){
     ulEl.innerHTML = '';
     localStorage.clear();
     myLeads = [];
 }
-
