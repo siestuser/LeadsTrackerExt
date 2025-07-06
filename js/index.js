@@ -13,15 +13,11 @@ inputBtn.addEventListener('click', function(){
 
 tabBtn.addEventListener('click', function(){
     saveCurrentActiveTab(myLeads, localStorageKey, ulEl);
+    errorDiv.style.display = 'none';
 });
 
 document.addEventListener('DOMContentLoaded', function(){
-    try{
-        renderListFromStorage(localStorageKey, ulEl);
-    } catch(error){
-        console.log(error);
-    }
-
+    renderListFromStorage(localStorageKey, ulEl);
 });
 
 clearBtn.addEventListener('click', function(){
@@ -30,14 +26,13 @@ clearBtn.addEventListener('click', function(){
 
 //function to get active Tab URL
 function saveCurrentActiveTab(array, storageKey, listObject) {
-    let activeTabURL;
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        activeTabURL = tabs[0].url;
+        let activeTabURL = tabs[0].url;
+        array = getFromLocalStorage(storageKey) || [];
+        array.push(activeTabURL);
+        renderLiElement(activeTabURL, listObject);
+        saveToLocalStorage(storageKey, array);
     });
-    array = getFromLocalStorage(storageKey) || [];
-    array.push(activeTabURL);
-    renderLiElement(activeTabURL, listObject);
-    saveToLocalStorage(storageKey, array);
 }
 
 //save the input element to local storage
@@ -82,10 +77,14 @@ function renderLiElement(listItem, listObject){
 //load and render leads from local storage
 function renderListFromStorage(storedLeads, listObject){
     let leads = getFromLocalStorage(storedLeads);
-
-    for (let lead of leads){
-        renderLiElement(lead, listObject);
+    if (leads){
+        for (let lead of leads){
+            renderLiElement(lead, listObject);
+        }
     }
+    // for (let lead of leads){
+    //     renderLiElement(lead, listObject);
+    // }
 
 }
 
