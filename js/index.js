@@ -28,9 +28,11 @@ function saveCurrentActiveTab(array, storageKey, listObject) {
     let activeTabURL;
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         activeTabURL = tabs[0].url;
+        array = getFromLocalStorage(storageKey) || [];
+        array.push(activeTabURL);
     });
-    array = getFromLocalStorage(storageKey) || [];
-    array.push(activeTabURL);
+    // array = getFromLocalStorage(storageKey) || [];
+    // array.push(activeTabURL);
     renderLiElement(activeTabURL, listObject);
     saveToLocalStorage(storageKey, array);
 }
