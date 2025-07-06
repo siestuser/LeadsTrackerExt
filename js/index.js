@@ -16,12 +16,7 @@ tabBtn.addEventListener('click', function(){
 });
 
 document.addEventListener('DOMContentLoaded', function(){
-    try{
-        renderListFromStorage(localStorageKey, ulEl);
-    } catch(error){
-        console.log(error);
-    }
-
+    renderListFromStorage(localStorageKey, ulEl);
 });
 
 clearBtn.addEventListener('click', function(){
@@ -82,10 +77,14 @@ function renderLiElement(listItem, listObject){
 //load and render leads from local storage
 function renderListFromStorage(storedLeads, listObject){
     let leads = getFromLocalStorage(storedLeads);
-
-    for (let lead of leads){
-        renderLiElement(lead, listObject);
+    if (leads){
+        for (let lead of leads){
+            renderLiElement(lead, listObject);
+        }
     }
+    // for (let lead of leads){
+    //     renderLiElement(lead, listObject);
+    // }
 
 }
 
