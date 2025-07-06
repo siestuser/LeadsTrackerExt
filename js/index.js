@@ -25,22 +25,13 @@ clearBtn.addEventListener('click', function(){
 
 //function to get active Tab URL
 function saveCurrentActiveTab(array, storageKey, listObject) {
-    let activeTabURL;
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        activeTabURL = tabs[0].url;
-        console.log(activeTabURL);
+        let activeTabURL = tabs[0].url;
         array = getFromLocalStorage(storageKey) || [];
-        console.log(array);
         array.push(activeTabURL);
-        console.log('after push');
-        console.log(array);
         renderLiElement(activeTabURL, listObject);
         saveToLocalStorage(storageKey, array);
-        console.log(localStorage.getItem(storageKey));
     });
-    // array = getFromLocalStorage(storageKey) || [];
-    // array.push(activeTabURL);
-
 }
 
 //save the input element to local storage
