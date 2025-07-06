@@ -16,7 +16,12 @@ tabBtn.addEventListener('click', function(){
 });
 
 document.addEventListener('DOMContentLoaded', function(){
-    renderListFromStorage(localStorageKey, ulEl);
+    try{
+        renderListFromStorage(localStorageKey, ulEl);
+    } catch(error){
+        console.log(error);
+    }
+
 });
 
 clearBtn.addEventListener('click', function(){
