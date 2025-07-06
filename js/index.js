@@ -13,6 +13,7 @@ inputBtn.addEventListener('click', function(){
 
 tabBtn.addEventListener('click', function(){
     saveCurrentActiveTab(myLeads, localStorageKey, ulEl);
+    errorDiv.style.display = 'none';
 });
 
 document.addEventListener('DOMContentLoaded', function(){
