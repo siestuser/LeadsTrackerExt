@@ -33,12 +33,14 @@ function saveCurrentActiveTab(array, storageKey, listObject) {
         console.log(array);
         array.push(activeTabURL);
         console.log('after push');
-        console.log(array)
+        console.log(array);
+        renderLiElement(activeTabURL, listObject);
+        saveToLocalStorage(storageKey, array);
+        console.log(localStorage.getItem(storageKey));
     });
     // array = getFromLocalStorage(storageKey) || [];
     // array.push(activeTabURL);
-    renderLiElement(activeTabURL, listObject);
-    saveToLocalStorage(storageKey, array);
+
 }
 
 //save the input element to local storage
