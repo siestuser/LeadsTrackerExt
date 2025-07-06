@@ -30,7 +30,10 @@ function saveCurrentActiveTab(array, storageKey, listObject) {
         activeTabURL = tabs[0].url;
         console.log(activeTabURL);
         array = getFromLocalStorage(storageKey) || [];
+        console.log(array);
         array.push(activeTabURL);
+        console.log('after push');
+        console.log(array)
     });
     // array = getFromLocalStorage(storageKey) || [];
     // array.push(activeTabURL);
